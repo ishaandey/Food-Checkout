@@ -17,7 +17,6 @@ def index(request):
                 owner = request.cleaned_data[request.user],
                 exp_date = form.cleaned_data['exp_date'],
                 ).save()
-
             return HttpResponseRedirect('/')
 
     else:

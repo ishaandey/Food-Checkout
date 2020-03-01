@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if user.is_authenticated %}
 <div class="section">
-    <form action="/your-name/" method="post">
-      {% csrf_token %}
-      {{ form }}
-      <input type="submit" value="Submit">
-    </form>
+    {% if user.is_authenticated %}
 </div>
-{% endif %}
 <div class="section">
     <!-- Display Items -->
     <div class="row columns is-multiline">
@@ -41,8 +35,6 @@
                 </div>
             </div>
         </div>
-        {% empty %}
-        <div>No items to display, log in to add items!</div>
         {% endfor %}
     </div>
 </div>
