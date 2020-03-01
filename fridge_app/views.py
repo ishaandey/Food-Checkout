@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 from .forms import ItemForm
 from .models import Item
@@ -21,7 +22,7 @@ def index(request):
         form = ItemForm()
 
     items = Item.objects.all().order_by('-ts_added')
-    user_web_url = 'https://www.urbandictionary.com/define.php?term='+str(request.user)
+    user_web_url = 'https://www.google.com/'
     food_url = ''
     return render(request, 'index.html', {'form': form, 'items':items, 'url1':user_web_url})
 

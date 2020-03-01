@@ -58,21 +58,25 @@
                         </div>
                         <div class="media-content">
                             <p class="title is-4 no-padding">{{item.item_name}}</p>
-                            <p><span class="title is-6"><a href="{{url1}}">{{user.get_username}}</a></span></p>
-                            <p class="subtitle is-6">{{user.get_username}}</p>
+                            <p><span class="title is-6"><a href="{{url1}}">{{item.owner}}</a></span></p>
+                            <p class="subtitle is-6">{{item.owner}}</p>
                         </div>
                     </div>
                     <div class="content">
-                        <p>Date Added: {{item.ts_added}}</p>
+                        <p>Date Added: {{ item.ts_added|date:"M d" }}  {{ item.ts_added|time:"h:i" }}</p>
+                        {% if item.exp_date %}
                         <p>Expiration Date: {{item.exp_date}}</p>
-                        <p></p>
+                        {% endif %}
+                        {% if item.comment %}
+                        <p>Notes: {{item.comment}}</p>
+                        {% endif %}
                         <input type="submit" value="Delete" class="button is-light">
                     </div>
                 </div>
             </div>
         </div>
         {% empty %}
-        <div>No items to display, log in to add items!</div>
+        <div> <font color="lemonchiffon"> No items to display, log in to add items!</font></div>
         {% endfor %}
     </div>
 </div>

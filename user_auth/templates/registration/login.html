@@ -1,10 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Login</h2>
+  <style>
+    p {
+      color:lemonchiffon;
+      }
+    a:hover
+      {color: #7cb4ca;}
+  </style>
+  <h2> <font color="lemonchiffon"> <strong></br>Login</strong> </font> </h2>
   
   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p><font color="lemonchiffon">Your username and password didn't match. Please try again.</font></p>
   {% endif %}
     
   {% if next %}
@@ -12,23 +19,26 @@
       <p>Your account doesn't have access to this page. To proceed,
       please login with an account that has access.</p>
     {% else %}
-      <p>Please login to see this page.</p>
+      <p>Please login to view items.</p>
     {% endif %}
   {% endif %}
 
   <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
+    <font color="lemonchiffon">
     <table>
       <tr>
-        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username.label_tag }} </td>
         <td>{{ form.username }}</td>
       </tr>
       <tr>
-        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password.label_tag }} </td>
         <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="login" />
+    </font>
+    <p></br></p>
+    <input type="submit" value="Login" class="button is-light"/>
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
