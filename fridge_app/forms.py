@@ -1,5 +1,8 @@
 from django import forms
 from django.utils.timezone import now
+from .widgets import BootstrapDateTimePickerInput
+
+
 class ItemForm(forms.Form):
     item_name = forms.CharField(
         label='Item Name', 
@@ -12,11 +15,15 @@ class ItemForm(forms.Form):
         max_length=500,
         required=False,
         )
-    exp_date = forms.DateField(
-        initial=now,
-        input_formats=['%m/%d/%y']
+    exp_date = forms.CharField(
+        # initial=now,
+        required=False,
+        max_length=500,
         )
-
-
-    
-    
+    # exp_date = forms.DateTimeField(
+    #     input_formats=['%m/%d/%Y %H:%M'],
+    #     widget=forms.DateTimeInput(attrs={
+    #         'class': 'form-control datetimepicker-input',
+    #         'data-target': '#datetimepicker1'})
+    # )
+            

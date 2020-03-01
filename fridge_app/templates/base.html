@@ -3,14 +3,34 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>bulma cards</title>
-  <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+  <title>Fridge App</title>
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  
+  <!-- flat picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  
+
+  <!-- <script>
+    // Initializing date/time pickers
+    flatpickr(document.querySelector('input[name="time_entered"]'), {
+      enableTime: true,
+      dateFormat: "n/j/y, h:i K",
+      defaultDate: new Date()
+    });
+    flatpickr(document.querySelector('input[name="exp_date"]'), {
+      dateFormat: "n/j/y"
+    });
+  </script> -->
+  
+  
   <style> 
-        body {
-        background: #041221;
+        html, body {
+        background: #222831;
+        height: 100%;
         }
+
         /* Card start*/
         .card {overflow:hidden}
         .card.large {
@@ -26,81 +46,6 @@
         .title.no-padding {
         margin-bottom: 0 !important;
         }
-        #flow span {
-        display: block;
-        width: 200vw;
-        height: 200vw;
-        position: absolute;
-        top: -180vw;
-        left: -50vw;
-        border-radius: 90vw;
-        opacity: 0.6;
-        }
-        .flow-1 {
-        background: #3281ff;
-        -webkit-animation: rotating 20s linear infinite;
-        -moz-animation: rotating 20s linear infinite;
-        -ms-animation: rotating 20s linear infinite;
-        -o-animation: rotating 20s linear infinite;
-        animation: rotating 20s linear infinite;
-        }
-        .flow-2 {
-        background: #f442ee;
-        position: absolute;
-        -webkit-animation: rotating 15s linear infinite;
-        -moz-animation: rotating 15s linear infinite;
-        -ms-animation: rotating 15s linear infinite;
-        -o-animation: rotating 15s linear infinite;
-        animation: rotating 15s linear infinite;
-        }
-        .flow-3 {
-        background: #42eef4;
-        position: absolute;
-        -webkit-animation: rotating 7s linear infinite;
-        -moz-animation: rotating 7s linear infinite;
-        -ms-animation: rotating 7s linear infinite;
-        -o-animation: rotating 7s linear infinite;
-        animation: rotating 7s linear infinite;
-        }
-        @-webkit-keyframes rotating {
-        from {
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-        }
-        to {
-        -ms-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-        }
-        }
-        @keyframes rotating {
-        from {
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-        }
-        to {
-        -ms-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-        }
-        }
-        .rotating {
-        -webkit-animation: rotating 2s linear infinite;
-        -moz-animation: rotating 2s linear infinite;
-        -ms-animation: rotating 2s linear infinite;
-        -o-animation: rotating 2s linear infinite;
-        animation: rotating 2s linear infinite;
-        }
         .footer{
         background-color: #222831;
         color: lemonchiffon;
@@ -108,25 +53,25 @@
         .footer p, strong
         {color: lemonchiffon}
         .footer a:hover
-        {color: crimson;}
+        {color: #7cb4ca;}
         .fa
         {color: lemonchiffon;
             margin: 10px}
 
         ::selection 
         {background-color:#DEF4FF}
+
   </style>
 
 </head>
 
 <body>
         <!-- START NAV -->
-        <nav class="navbar">
+        <nav class="navbar is-light">
                 <div class="container">
                     <div class="navbar-brand">
                         <h2>Fridge App by Ishaan</h2>
                         <span class="navbar-burger burger" data-target="navbarMenu">
-                                <span></span>
                         <span></span>
                         <span></span>
                         </span>
@@ -140,7 +85,7 @@
                                     About
                                 </a>
                             <a class="navbar-item" href="{% url 'logout' %}">
-                                    Logout
+                                    Accounts
                                 </a>
                         </div>
                     </div>
@@ -168,8 +113,6 @@
                 </div>
             </div>
         </footer>
-
-            <script src="../js/bulma.js"></script>
 
 
 </body>

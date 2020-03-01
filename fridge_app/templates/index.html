@@ -3,10 +3,70 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="section">
-    <form action="/your-name/" method="post">
+    <!-- <style>p{color:lemonchiffon; font-size:large;}</style> -->
+    <form action="/" method="post">
       {% csrf_token %}
-      {{ form }}
-      <input type="submit" value="Submit">
+      <!-- {{ form.as_p }} -->
+      
+      <div class="field">
+        <label class="label">Item Description</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Ice Cream" name="item_name", id="id_item_name">
+        </div>
+        <p class="help">Required</p>
+      </div>
+      <div class="field">
+        <label class="label">Comment</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Bought it Friday" name="comment", id="id_comment">
+        </div>
+        <p class="help">Optional</p>
+      </div>
+      <div class="field">
+        <label class="label">Expiration Date</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Next Week" name="exp_date", id="id_exp_date">
+        </div>
+        <p class="help">Optional</p>
+      </div>
+
+
+      <!-- {{ form.non_field_errors }}
+      <div class="fieldWrapper" type=text>
+          {{ form.item_name.errors }}
+          <label for="{{ form.item_name.id_for_label }}">Item Description:</label>
+          {{ form.item_name }}
+      </div>
+      <div class="fieldWrapper" type=text>
+        {{ form.comment.errors }}
+        <label for="{{ form.comment.id_for_label }}">Comment (Optional):</label>
+        {{ form.comment }}
+    </div>
+    <div class="fieldWrapper" type=text>
+      {{ form.exp_date.errors }}
+      <label for="{{ form.exp_date.id_for_label }}">Expiration Date:</label>
+      {{ form.exp_date }}
+    </div> -->
+
+
+      <!-- {{ form.item_name }}
+      {{ form.comment }}
+      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+        {{ form.exp_date }}
+        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        </div>
+      </div>
+      <script>
+        $(function () {
+          $("#datetimepicker1").datetimepicker({
+            format: 'DD/MM/YYYY HH:mm',
+          });
+        });
+      </script> -->
+
+
+      <input type="submit" value="Add Item" class="button is-light">
     </form>
 </div>
 {% endif %}
@@ -15,7 +75,7 @@
     <div class="row columns is-multiline">
         {% for item in items %}
         <div class="column is-one-third">
-            <div class="card large round">
+            <div class="card medium round">
                 <div class="card-image ">
                     <figure class="image">
                         <img src="https://source.unsplash.com/Jy6luiLBsrk" alt="Image">
@@ -30,7 +90,7 @@
                         </div>
                         <div class="media-content">
                             <p class="title is-4 no-padding">{{item.item_name}}</p>
-                            <p><span class="title is-6"><a href="https://www.urbandictionary.com/define.php?term=">{{user.get_username}}</a></span></p>
+                            <p><span class="title is-6"><a href="{{url1}}">{{user.get_username}}</a></span></p>
                             <p class="subtitle is-6">{{user.get_username}}</p>
                         </div>
                     </div>
@@ -47,3 +107,5 @@
     </div>
 </div>
 {% endblock %}
+
+
