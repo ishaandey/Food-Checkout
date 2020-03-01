@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from .unsplash import get_food_img
 
 from .forms import ItemForm
 from .models import Item
@@ -15,6 +16,7 @@ def index(request):
                 comment = form.cleaned_data['comment'],
                 owner = request.user,
                 exp_date = form.cleaned_data['exp_date'],
+                item_img = get_food_img(str(form.cleaned_data['item_name']))
                 ).save()
             return HttpResponseRedirect('/')
 
