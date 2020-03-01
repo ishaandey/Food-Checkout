@@ -5,10 +5,6 @@ from .forms import ItemForm
 from .models import Item
 from django.http import HttpResponseRedirect
 
-# import requests
-import json
-# Create your views here.
-
 
 def index(request):
     if request.method == 'POST':
@@ -18,15 +14,15 @@ def index(request):
                 comment = form.cleaned_data['comment'],
                 owner = request.user,
                 exp_date = form.cleaned_data['exp_date'],
-                # img_url = 
                 ).save()
             return HttpResponseRedirect('/')
 
     else:
         form = ItemForm()
 
-    items = Item.objects.all().order_by('-exp_date')
+    items = Item.objects.all().order_by('-ts_added')
     user_web_url = 'https://www.urbandictionary.com/define.php?term='+str(request.user)
+    food_url = ''
     return render(request, 'index.html', {'form': form, 'items':items, 'url1':user_web_url})
 
 @login_required

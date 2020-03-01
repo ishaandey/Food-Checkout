@@ -1,84 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<div class="section">
-    <!-- <style>p{color:lemonchiffon; font-size:large;}</style> -->
-    <form action="/" method="post">
-      {% csrf_token %}
-      <!-- {{ form.as_p }} -->
-      
-      <div class="field">
-        <label class="label">Item Description</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Ice Cream" name="item_name", id="id_item_name">
-        </div>
-        <p class="help">Required</p>
-      </div>
-      <div class="field">
-        <label class="label">Comment</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Bought it Friday" name="comment", id="id_comment">
-        </div>
-        <p class="help">Optional</p>
-      </div>
-      <div class="field">
-        <label class="label">Expiration Date</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Next Week" name="exp_date", id="id_exp_date">
-        </div>
-        <p class="help">Optional</p>
-      </div>
 
-
-      <!-- {{ form.non_field_errors }}
-      <div class="fieldWrapper" type=text>
-          {{ form.item_name.errors }}
-          <label for="{{ form.item_name.id_for_label }}">Item Description:</label>
-          {{ form.item_name }}
-      </div>
-      <div class="fieldWrapper" type=text>
-        {{ form.comment.errors }}
-        <label for="{{ form.comment.id_for_label }}">Comment (Optional):</label>
-        {{ form.comment }}
-    </div>
-    <div class="fieldWrapper" type=text>
-      {{ form.exp_date.errors }}
-      <label for="{{ form.exp_date.id_for_label }}">Expiration Date:</label>
-      {{ form.exp_date }}
-    </div> -->
-
-
-      <!-- {{ form.item_name }}
-      {{ form.comment }}
-      <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-        {{ form.exp_date }}
-        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-        </div>
-      </div>
-      <script>
-        $(function () {
-          $("#datetimepicker1").datetimepicker({
-            format: 'DD/MM/YYYY HH:mm',
-          });
-        });
-      </script> -->
-
-
-      <input type="submit" value="Add Item" class="button is-light">
-    </form>
-</div>
-{% endif %}
 <div class="section">
     <!-- Display Items -->
-    <div class="row columns is-multiline">
+    <div class="row columns is-multiline is-mobile">
+      {% if user.is_authenticated %}
+      <div class="column is-one-third is-mobile">
+        <div class="card large round">
+          <div class="card-image ">
+            <figure class="image">
+                <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80" alt="Image">
+            </figure>
+        </div>
+          <div class="card-content">
+          <form action="/" method="post">
+            {% csrf_token %}
+            
+            <div class="field">
+              <label class="label">Item Description</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Blueberries" name="item_name", id="id_item_name">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Comment</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Bought it Friday" name="comment", id="id_comment">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Expiration Date</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Next Week" name="exp_date", id="id_exp_date">
+              </div>
+            </div>
+            <input type="submit" value="Add Item" class="button is-light">
+          </form>
+          </div>
+        </div>
+        </div>
+        {% endif %}
         {% for item in items %}
-        <div class="column is-one-third">
-            <div class="card medium round">
+        <div class="column is-one-third is-mobile">
+            <div class="card large round">
                 <div class="card-image ">
                     <figure class="image">
-                        <img src="https://source.unsplash.com/Jy6luiLBsrk" alt="Image">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80" alt="Image">
                     </figure>
                 </div>
                 <div class="card-content">
@@ -97,6 +65,8 @@
                     <div class="content">
                         <p>Date Added: {{item.ts_added}}</p>
                         <p>Expiration Date: {{item.exp_date}}</p>
+                        <p></p>
+                        <input type="submit" value="Delete" class="button is-light">
                     </div>
                 </div>
             </div>

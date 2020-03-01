@@ -1,12 +1,9 @@
-from unsplash.api import Api
-from unsplash.auth import Auth
+import json
 
-client_id = "NPmSc3FjJfHkYFq5idCJn99iao-5yNyViqO8upWtkiw"
-client_secret = "1RTXdel6BrOpDr_wOWuaxwV4yQn9QC6BT8wP54KB07o"
-redirect_uri = ""
-code = ""
-
-auth = Auth(client_id, client_secret, redirect_uri, code=code)
-api = Api(auth)
-
-
+def get_food_img(thing='cheese'):
+    PARAMS = {
+        'key':'AIzaSyC-YOb4s4JRxypbUvFB8Hf5gtMAi1nFi5Y&cx=016878084261136898543:i7sgeakvavd',
+        'q':thing+' unsplash',
+    }
+    r = requests.get(url="https://www.googleapis.com/customsearch/v1", data=json.dumps(PARAMS)).json()
+    print(r)
