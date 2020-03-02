@@ -12,11 +12,12 @@ def index(request):
     if request.method == 'POST':
         form = ItemForm(request.POST)
         if form.is_valid():
+            item_name_str = str(form.cleaned_data['item_name'])
             Item(item_name = form.cleaned_data['item_name'],
                 comment = form.cleaned_data['comment'],
                 owner = request.user,
                 exp_date = form.cleaned_data['exp_date'],
-                item_img = get_food_img(str(form.cleaned_data['item_name']))
+                item_img = get_food_img(item_name_str),
                 ).save()
             return HttpResponseRedirect('/')
 

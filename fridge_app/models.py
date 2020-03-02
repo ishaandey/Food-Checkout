@@ -8,7 +8,7 @@ class Item(models.Model):
     ts_added = models.DateTimeField(default=now)
     exp_date = models.CharField(max_length=1000, blank=True, null=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    item_img = models.CharField(max_length=1000)
+    item_img = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.item_name
