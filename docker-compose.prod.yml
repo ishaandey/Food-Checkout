@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: gunicorn fridge_tracker.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn fridge_project.wsgi:application --bind 0.0.0.0:8000
     ports:
       - '80:8000'
     environment:
